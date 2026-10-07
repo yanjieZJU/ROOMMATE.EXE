@@ -1,0 +1,7 @@
+.env
+node_modules/
+dist/
+.worktrees/
+artifacts/*.json
+playwright-report/
+test-results/

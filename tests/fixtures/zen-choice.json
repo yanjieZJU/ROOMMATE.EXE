@@ -1,0 +1,19 @@
+{
+  "model": "jev-1.13-free",
+  "answers": {
+    "action": {
+      "type": "choice",
+      "choice": "action_2",
+      "probabilities": {
+        "action_1": 0.18,
+        "action_2": 0.67,
+        "action_3": 0.15
+      },
+      "confidence": 0.67
+    }
+  },
+  "usage": {
+    "input_tokens": 240,
+    "output_tokens": 36
+  }
+}

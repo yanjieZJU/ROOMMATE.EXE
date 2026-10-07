@@ -1,0 +1,108 @@
+<style>
+  :root { --ink:#162033; --cream:#fff3d8; --coral:#f05c64; --peach:#f4a261; --teal:#277b78; --sky:#8ec5d8; --leaf:#4f8a4c; }
+  .cards { grid-template-columns: repeat(3,minmax(0,1fr)); gap:18px; }
+  .card { border:3px solid var(--ink); box-shadow:5px 5px 0 var(--ink); background:#fffaf0; }
+  .card-image { padding:0; background:#d8d2c4; height:255px; overflow:hidden; border-bottom:3px solid var(--ink); }
+  .card-body { min-height:155px; }
+  .pixel { image-rendering:pixelated; box-sizing:border-box; color:var(--ink); font-family:monospace; }
+  .scene-title { position:absolute; left:8px; top:8px; padding:3px 7px; color:#fff; background:var(--ink); font:700 11px monospace; z-index:4; }
+  .dollhouse,.topdown,.hybrid { position:relative; height:100%; background:var(--sky); overflow:hidden; }
+  .dollhouse .roof { height:36px; margin:26px 14px 0; background:#32415d; border:4px solid var(--ink); box-shadow:inset 0 -9px #222e43; }
+  .dollhouse .floor { height:82px; margin:0 20px; display:grid; grid-template-columns:1fr 1.25fr 1fr; border:4px solid var(--ink); border-top:0; background:var(--cream); }
+  .dollhouse .room { position:relative; border-right:3px solid var(--ink); padding:8px; }
+  .dollhouse .room:last-child { border:0; }
+  .dollhouse .floor.two { background:#e8c39e; }
+  .bed { width:44px; height:22px; background:var(--coral); border:3px solid var(--ink); position:absolute; bottom:8px; left:8px; }
+  .sofa { width:50px; height:24px; background:var(--teal); border:3px solid var(--ink); position:absolute; bottom:8px; right:8px; }
+  .plant { width:15px; height:25px; background:var(--leaf); border:3px solid var(--ink); position:absolute; bottom:8px; right:8px; }
+  .avatar { width:13px; height:24px; position:absolute; bottom:8px; left:45%; background:#f6d79a; border:3px solid var(--ink); box-shadow:0 -5px 0 var(--coral); }
+  .avatar.jev { left:63%; box-shadow:0 -5px 0 #6a67ce; }
+  .street { position:absolute; bottom:0; width:100%; height:38px; background:#4b5265; border-top:4px solid var(--ink); }
+  .topdown { background:#a7d1d0; padding:28px 18px 14px; }
+  .topdown .plan { height:205px; display:grid; grid-template-columns:1fr 1.35fr 1fr; grid-template-rows:1fr 1fr; border:5px solid var(--ink); background:var(--cream); transform:rotate(-1deg); box-shadow:8px 8px 0 #5e7b78; }
+  .topdown .room { position:relative; border:2px solid var(--ink); background:#f4cfaa; }
+  .topdown .room:nth-child(2),.topdown .room:nth-child(5){background:#f7e8c5}
+  .topdown .rug { position:absolute; width:58%; height:46%; left:20%; top:26%; background:var(--coral); border:3px solid var(--ink); }
+  .topdown .counter { position:absolute; width:22px; height:75%; right:7px; top:12%; background:var(--teal); border:3px solid var(--ink); }
+  .dot { width:14px; height:14px; border:3px solid var(--ink); background:#f6d79a; position:absolute; border-radius:2px; z-index:2; }
+  .dot.you { left:35%; top:56%; box-shadow:0 -5px var(--coral); }
+  .dot.jev { left:59%; top:34%; box-shadow:0 -5px #6a67ce; }
+  .hybrid { background:linear-gradient(#8ec5d8 0 44%,#efc996 44% 100%); }
+  .hybrid .facade { position:absolute; left:14px; right:14px; top:44px; bottom:18px; border:4px solid var(--ink); background:#e8b477; }
+  .hybrid .sign { height:28px; background:#33415d; color:#ffd28e; border-bottom:4px solid var(--ink); text-align:center; font:700 12px/28px monospace; }
+  .hybrid .window-row { height:82px; display:grid; grid-template-columns:1fr 1fr; gap:8px; padding:9px; }
+  .hybrid .window { position:relative; background:#ffeac8; border:4px solid var(--ink); box-shadow:inset 0 0 0 6px #d88961; }
+  .hybrid .awning { height:23px; margin:0 9px; background:repeating-linear-gradient(90deg,var(--coral) 0 18px,#ffd0a8 18px 36px); border:4px solid var(--ink); }
+  .hybrid .shop { margin:0 9px; height:51px; background:#263143; border:4px solid var(--ink); border-top:0; }
+  .badge { display:inline-block; padding:3px 6px; border:2px solid var(--ink); background:#fff; font:700 11px monospace; margin-right:4px; }
+  @media(max-width:900px){.cards{grid-template-columns:1fr}.card-image{height:290px}}
+</style>
+
+<h2>《合租七日》：哪一种空间视角最对？</h2>
+<p class="subtitle">三种方案都采用实时行动、确定性像素动画和温暖但带城市感的高密度像素美术。点击你最想继续发展的方向。</p>
+
+<div class="cards">
+  <div class="card" data-choice="a-cutaway" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="dollhouse pixel">
+        <div class="scene-title">A / 剖面公寓</div>
+        <div class="roof"></div>
+        <div class="floor">
+          <div class="room"><div class="bed"></div></div>
+          <div class="room"><div class="sofa"></div><div class="avatar"></div><div class="avatar jev"></div></div>
+          <div class="room"><div class="plant"></div></div>
+        </div>
+        <div class="floor two">
+          <div class="room"><div class="sofa"></div></div>
+          <div class="room"><div class="plant"></div></div>
+          <div class="room"><div class="bed"></div></div>
+        </div>
+        <div class="street"></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A. 玩具屋剖面</h3>
+      <p>像第一张参考图一样，把公寓做成一栋精致的小建筑。房间像舞台，靠近、关门、隔墙等待都很清楚。</p>
+      <span class="badge">叙事最强</span><span class="badge">移动受限</span>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b-topdown" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="topdown pixel">
+        <div class="scene-title">B / 俯视平面</div>
+        <div class="plan">
+          <div class="room"><div class="bed"></div></div>
+          <div class="room"><div class="rug"></div><div class="dot you"></div><div class="dot jev"></div></div>
+          <div class="room"><div class="counter"></div></div>
+          <div class="room"><div class="plant"></div></div>
+          <div class="room"><div class="sofa"></div></div>
+          <div class="room"><div class="bed"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B. 经典俯视公寓</h3>
+      <p>最接近《模拟人生》的空间体验。路径、占用物品和两个角色的距离最容易成为真正的玩法。</p>
+      <span class="badge">游戏性最强</span><span class="badge">建筑感较弱</span>
+    </div>
+  </div>
+
+  <div class="card" data-choice="c-facade" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="hybrid pixel">
+        <div class="scene-title">C / 街区立面</div>
+        <div class="facade">
+          <div class="sign">ROOMMATE 7 DAYS</div>
+          <div class="window-row"><div class="window"><div class="avatar"></div></div><div class="window"><div class="avatar jev"></div></div></div>
+          <div class="awning"></div><div class="shop"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C. 街区立面 + 窗内生活</h3>
+      <p>继承第二张参考图的城市氛围。外部时间、天气和邻里很有魅力，但室内动作可读性最低。</p>
+      <span class="badge">氛围最强</span><span class="badge">不利于交互</span>
+    </div>
+  </div>
+</div>

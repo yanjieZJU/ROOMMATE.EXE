@@ -1,0 +1,66 @@
+<style>
+  :root{--ink:#172033;--cream:#fff1d2;--wall:#e8b57a;--coral:#ed5b62;--pink:#f58ca0;--teal:#2b7f79;--blue:#7ab9d1;--leaf:#4e8b52;--night:#27344c;}
+  .mockup{border:3px solid var(--ink);box-shadow:7px 7px 0 var(--ink);background:#efe7d7;margin-bottom:24px}
+  .mockup-header{background:var(--ink);color:#ffe0a8;font:700 12px monospace;letter-spacing:.08em}
+  .game{height:500px;position:relative;overflow:hidden;background:linear-gradient(#86bed2 0 40%,#ddc293 40%);font-family:monospace;color:var(--ink)}
+  .skyline{position:absolute;inset:75px 0 auto;height:90px;background:linear-gradient(90deg,#b58564 0 16%,transparent 16% 18%,#d19b6f 18% 33%,transparent 33% 36%,#98745f 36% 52%,transparent 52% 55%,#c88f68 55% 75%,transparent 75% 78%,#a17a62 78%);opacity:.7}
+  .hud{position:absolute;top:14px;left:14px;right:14px;height:45px;display:flex;justify-content:space-between;align-items:center;z-index:10}
+  .hud-box{background:var(--cream);border:3px solid var(--ink);box-shadow:3px 3px 0 var(--ink);padding:7px 10px;font-weight:700}
+  .day{color:var(--coral)}
+  .house{position:absolute;left:7%;right:7%;top:110px;bottom:32px;border:5px solid var(--ink);background:#6f5147;box-shadow:10px 10px 0 rgba(23,32,51,.35)}
+  .roof{position:absolute;left:-13px;right:-13px;top:-26px;height:24px;background:var(--night);border:5px solid var(--ink)}
+  .floor{height:50%;display:grid;border-bottom:5px solid var(--ink)}
+  .floor.up{grid-template-columns:1fr 80px 1fr}.floor.down{grid-template-columns:1.1fr 1.25fr .7fr .65fr;border-bottom:0}
+  .room{position:relative;background:var(--cream);border-right:4px solid var(--ink);overflow:hidden}.room:last-child{border-right:0}.room.private{background:#f0c594}.room.bath{background:#a8d1cc}.room.entry{background:#d99a70}.room.living{background:#f4d7aa}
+  .window{position:absolute;width:46px;height:38px;right:12px;top:12px;background:var(--blue);border:4px solid var(--ink);box-shadow:inset 0 0 0 5px #bde2e6}
+  .bed{position:absolute;left:12px;bottom:15px;width:68px;height:30px;background:var(--coral);border:4px solid var(--ink)}
+  .desk{position:absolute;right:12px;bottom:18px;width:52px;height:28px;background:#9b6548;border:4px solid var(--ink)}
+  .stairs{background:repeating-linear-gradient(155deg,#e7b678 0 9px,var(--ink) 10px 13px);position:relative}
+  .counter{position:absolute;left:9px;bottom:12px;width:42px;height:76px;background:var(--teal);border:4px solid var(--ink)}
+  .fridge{position:absolute;right:10px;bottom:10px;width:45px;height:86px;background:#e7e1cf;border:4px solid var(--ink)}
+  .sofa{position:absolute;left:16px;bottom:14px;width:88px;height:40px;background:var(--pink);border:4px solid var(--ink)}
+  .table{position:absolute;right:20px;bottom:15px;width:48px;height:27px;background:#b8784f;border:4px solid var(--ink)}
+  .plant{position:absolute;right:9px;bottom:10px;width:21px;height:42px;background:var(--leaf);border:4px solid var(--ink)}
+  .avatar{position:absolute;width:18px;height:31px;background:#f2c88e;border:3px solid var(--ink);bottom:17px;z-index:5}.avatar:before{content:"";position:absolute;width:16px;height:9px;background:var(--coral);left:-2px;top:-6px;border:2px solid var(--ink)}.avatar.you{left:43%}.avatar.jev{left:62%}.avatar.jev:before{background:#665fc1}
+  .bubble{position:absolute;left:59%;bottom:61px;background:#fff;border:3px solid var(--ink);padding:5px 8px;font:700 11px monospace;z-index:8}.bubble:after{content:"";position:absolute;left:12px;bottom:-8px;border:4px solid transparent;border-top-color:var(--ink)}
+  .need{position:absolute;left:65%;bottom:105px;background:#fff;border:3px solid var(--ink);width:27px;height:27px;text-align:center;line-height:27px;z-index:8}
+  .menu{position:absolute;right:18px;bottom:18px;width:185px;background:var(--cream);border:4px solid var(--ink);box-shadow:5px 5px 0 var(--ink);z-index:12;padding:8px}.menu-title{font-weight:700;border-bottom:2px solid var(--ink);padding-bottom:5px;margin-bottom:5px}.verb{display:block;padding:5px 7px;margin:3px 0;background:#fff;border:2px solid var(--ink)}.verb.active{background:var(--coral);color:#fff}
+  .caption{position:absolute;left:18px;bottom:17px;background:var(--ink);color:#fff;padding:6px 10px;font-size:11px;z-index:13}
+  .ending{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:25px;background:#8fb7b0;min-height:255px;font-family:monospace}
+  .lease{background:var(--cream);border:4px solid var(--ink);box-shadow:6px 6px 0 var(--ink);padding:22px;text-align:center;position:relative}.lease h3{font-size:20px}.stamp{display:inline-block;margin-top:15px;padding:10px 14px;border:5px double var(--coral);color:var(--coral);font-size:22px;font-weight:900;transform:rotate(-4deg)}.stamp.leave{color:#58627a;border-color:#58627a;transform:rotate(3deg)}
+  .decision-link{grid-column:1/-1;text-align:center;background:var(--ink);color:#fff;padding:10px}
+  .options{margin-top:22px}.option{border-width:3px}
+  @media(max-width:850px){.game{height:420px}.house{left:2%;right:2%}.menu{width:155px}.ending{grid-template-columns:1fr}}
+</style>
+
+<h2>视觉与界面提案：完整剖面就是主界面</h2>
+<p class="subtitle">参考你提供的温暖高密度像素建筑：深色轮廓、珊瑚色招牌感、植物和城市背景。HUD 尽量少，状态通过角色动作表达。</p>
+
+<div class="mockup">
+  <div class="mockup-header">DAY 4 · 玩家正在邀请 Jev 一起吃饭</div>
+  <div class="game">
+    <div class="skyline"></div>
+    <div class="hud"><div class="hud-box"><span class="day">DAY 4 / 7</span>　19:42</div><div class="hud-box">朋友已经离开 · 夜晚</div></div>
+    <div class="house">
+      <div class="roof"></div>
+      <div class="floor up"><div class="room private"><div class="bed"></div><div class="window"></div></div><div class="room stairs"></div><div class="room private"><div class="bed"></div><div class="desk"></div></div></div>
+      <div class="floor down"><div class="room"><div class="counter"></div><div class="fridge"></div></div><div class="room living"><div class="sofa"></div><div class="table"></div><div class="avatar you"></div><div class="avatar jev"></div><div class="bubble">……</div><div class="need">☾</div></div><div class="room bath"></div><div class="room entry"><div class="plant"></div></div></div>
+    </div>
+    <div class="menu"><div class="menu-title">餐桌 · 有两份晚餐</div><span class="verb active">邀请一起吃</span><span class="verb">先吃自己的</span><span class="verb">把一份留在桌上</span></div>
+    <div class="caption">WASD 移动　·　点击物品互动　·　状态不显示数值</div>
+  </div>
+</div>
+
+<div class="mockup">
+  <div class="mockup-header">DAY 7 · 两张续租卡同时揭晓</div>
+  <div class="ending">
+    <div class="lease"><div class="label">你的决定</div><h3>继续合租</h3><div class="stamp">续租</div></div>
+    <div class="lease"><div class="label">Jev 的决定</div><h3>结束合租</h3><div class="stamp leave">搬走</div></div>
+    <div class="decision-link">结局：你想留下，而它决定离开　▸ 查看七日关键决策</div>
+  </div>
+</div>
+
+<div class="options">
+  <div class="option" data-choice="visual-approved" onclick="toggleSelect(this)"><div class="letter">✓</div><div class="content"><h3>方向正确</h3><p>保留这个剖面密度、HUD 克制程度和续租卡揭晓。</p></div></div>
+  <div class="option" data-choice="visual-revise" onclick="toggleSelect(this)"><div class="letter">↺</div><div class="content"><h3>需要调整</h3><p>点击后在对话里告诉我，希望改变色彩、房间比例、信息量或结局表现。</p></div></div>
+</div>

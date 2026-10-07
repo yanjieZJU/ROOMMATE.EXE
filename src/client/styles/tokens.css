@@ -1,0 +1,18 @@
+:root {
+  color-scheme: light;
+  --ink: #101010;
+  --paper: #f4f4ef;
+  --gray-1: #deded8;
+  --gray-2: #9a9a94;
+  --gray-3: #4b4b48;
+  --line: 2px;
+  --shadow: 4px 4px 0 var(--ink);
+  --font-mono: "Cascadia Mono", "Microsoft YaHei UI", "Noto Sans Mono CJK SC", monospace;
+  --pixel-outline: #17252a;
+  --pixel-cream: #f6e7c8;
+  --pixel-coral: #ef5b67;
+  --pixel-orange: #e99a3f;
+  --pixel-teal: #155e63;
+  --pixel-blue: #68a9c9;
+  --pixel-green: #5f9c5a;
+}
